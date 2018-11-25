@@ -1,0 +1,8 @@
+<div class="pb-2 mt-4 mb-2 border-bottom"><h2>Create Course</h2></div>
+<form (ngSubmit)="create()">
+<div class="form-group">
+  <label for="username">Enter the name of Course:</label>
+  <input type="text" class="form-control" id="username" [(ngModel)]="courseCreate.name" name="username">
+</div>
+<input type="submit" class="btn btn-info" value="Create">
+</form>

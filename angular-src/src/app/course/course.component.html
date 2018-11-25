@@ -1,0 +1,35 @@
+<h1>List of Classes in the course</h1>
+<button (click)="showCreate=true" class="btn btn-success">Create Class</button>
+<span *ngIf="showCreate">
+  <input type="text" [(ngModel)]="newClassName">
+  <button (click)="createClass()">Save</button>
+  <button (click)="cancel()">Cancel</button>
+</span>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let class of classes">
+        <td >{{ class.name }}<button (click)="getStudents(class._id)">See Students</button ></td>
+        <td><a (click)="showname[class._id]=true" class="btn btn-info">Edit</a>
+        <span *ngIf="showname[class._id]"><input type="text" placeholder="{{ class.name }}" [(ngModel)]="edit.name">
+          <button (click)="editClass(class._id)" >Save</button>
+          <button (click)="cancel(class._id)">Cancel</button>
+        </span></td>
+        <td><a (click)="deleteClass(class._id)" class="btn btn-danger">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<!-- <ul class="list-group">
+  <li (click)="navigateToStudent(class._id)" class="list-group-item list-group-item-action" *ngFor="let class of classes">
+    {{ class.name }}
+  </li>
+</ul> -->

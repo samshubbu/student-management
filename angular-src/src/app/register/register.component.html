@@ -1,0 +1,29 @@
+<div class="pb-2 mt-4 mb-2 border-bottom"><h2>Register</h2></div>
+<form  (ngSubmit)="register()">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="model.name" id="name" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="model.username" name="username"  class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" id="email" [(ngModel)]="model.email" name="email"  class="form-control">
+  </div>
+  <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="model.password" name="password"  class="form-control">
+  </div>
+  <label *ngFor = "let role of model.roles">
+    <input
+      type="checkbox"
+      name= "{{ role.name }}"
+      value="{{ role.value }}"
+      [checked] = "role.checked"
+      (change)="role.checked = !role.checked"
+    > {{ role.name }}
+  </label>
+  <input type="submit" class="btn btn-success" value="Register">
+</form>

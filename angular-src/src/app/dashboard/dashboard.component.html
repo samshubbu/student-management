@@ -1,0 +1,32 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#">Hello&nbsp;{{ user.name }}</a>
+  <a id="logout" (click)="logout()">Logout</a>
+</div>
+<h2>List of All Courses</h2>
+<p></p>
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; open</span>
+<a id="create" (click)="createCourse()" class="btn btn-success">Create</a>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td >{{ course.name }}<button (click)="getClasses(course._id)">See Classes</button ></td>
+        <td><a (click)="showname[course._id]=true" class="btn btn-info">Edit</a>
+        <span *ngIf="showname[course._id]"><input type="text" placeholder="{{ course.name }}" [(ngModel)]="edit.name">
+          <button (click)="editCourse(course._id)" >Save</button>
+          <button (click)="cancel(course._id)">Cancel</button>
+        </span></td>
+        <td><a (click)="deleteCourse(course._id)" class="btn btn-danger">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
