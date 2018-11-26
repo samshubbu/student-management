@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
 // create student
 router.put("/", async (req, res) => {
   try {
+    console.log(req.body);
     const courseExists = await Student.count({ name: req.body.name }).exec();
     if (courseExists > 0) {
       res.status(400).send({ message: "Course with same name already exists" });
@@ -51,13 +52,13 @@ router.post("/", async (req, res) => {
     if (courseExists == 0) {
       res.status(400).send({ message: "No course Found" });
     } else {
-      const CourseClass = await Student.update(
+      const student = await Student.update(
         {
           _id: req.body.id
         },
         req.body.details
       );
-      res.status(200).send({ success: true, course });
+      res.status(200).send({ success: true });
     }
   } catch (error) {
     res.status(500).send({ message: error.message });

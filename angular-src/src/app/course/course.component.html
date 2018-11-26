@@ -1,9 +1,9 @@
 <h1>List of Classes in the course</h1>
 <button (click)="showCreate=true" class="btn btn-success">Create Class</button>
 <span *ngIf="showCreate">
-  <input type="text" [(ngModel)]="newClassName">
-  <button (click)="createClass()">Save</button>
-  <button (click)="cancel()">Cancel</button>
+  <input type="text" style="margin-left:5px;" [(ngModel)]="newClassName" placeholder="class_name">
+  <button (click)="createClass()" class="btn btn-dark">Save</button>
+  <button (click)="cancel()" class="btn btn-warning">Cancel</button>
 </span>
 
 <div class="table-responsive">
@@ -11,13 +11,15 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>See Details</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let class of classes">
-        <td >{{ class.name }}<button (click)="getStudents(class._id)">See Students</button ></td>
+        <td >{{ class.name }}</td>
+        <td><button class="btn btn-primary" (click)="getStudents(class._id)">See Students</button></td>
         <td><a (click)="showname[class._id]=true" class="btn btn-info">Edit</a>
         <span *ngIf="showname[class._id]"><input type="text" placeholder="{{ class.name }}" [(ngModel)]="edit.name">
           <button (click)="editClass(class._id)" >Save</button>

@@ -12,13 +12,15 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>See Details</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let course of courses">
-        <td >{{ course.name }}<button (click)="getClasses(course._id)">See Classes</button ></td>
+        <td >{{ course.name }}</td>
+        <td><button class="btn btn-primary" (click)="getClasses(course._id)">See Classes</button></td>
         <td><a (click)="showname[course._id]=true" class="btn btn-info">Edit</a>
         <span *ngIf="showname[course._id]"><input type="text" placeholder="{{ course.name }}" [(ngModel)]="edit.name">
           <button (click)="editCourse(course._id)" >Save</button>

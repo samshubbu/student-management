@@ -3,11 +3,12 @@
     {{ student.name }}
   </li>
 </ul> -->
+<h1>List of Students in the class</h1>
 <button (click)="showCreate=true" class="btn btn-success">Create Student</button>
 <span *ngIf="showCreate">
-  <input type="text" [(ngModel)]="newClassName">
-  <button (click)="createStudent()">Save</button>
-  <button (click)="cancel()">Cancel</button>
+  <input type="text" style="margin-left:5px;" [(ngModel)]="newClassName" placeholder="class_name">
+  <button (click)="createStudent()" class="btn btn-dark">Save</button>
+  <button (click)="cancel()" class="btn btn-warning">Cancel</button>
 </span>
 
 <div class="table-responsive">
@@ -21,10 +22,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let student of students">
-        <td >{{ student.name }}<button (click)="getStudents(student._id)">See Students</button ></td>
+        <td>{{ student.name }}</td>
         <td><a (click)="showname[student._id]=true" class="btn btn-info">Edit</a>
         <span *ngIf="showname[student._id]"><input type="text" placeholder="{{ student.name }}" [(ngModel)]="edit.name">
-          <button (click)="editStudent(student._id)" >Save</button>
+          <button (click)="editStudent(student._id, edit.name)" >Save</button>
           <button (click)="cancel(student._id)">Cancel</button>
         </span></td>
         <td><a (click)="deleteStudent(student._id)" class="btn btn-danger">Delete</a></td>

@@ -54,9 +54,9 @@ export class CourseService {
   }
 
   // Edit Class
-  editClass(courseId, name) {
+  editClass(classId, name) {
     const headers = new HttpHeaders().set('authorization', localStorage.getItem('id_token'));
-    return this.http.post<any>('http://localhost:5000/classes', {name, course_id: courseId}, {headers}).pipe(
+    return this.http.post<any>('http://localhost:5000/classes', {id: classId, details: {name}}, {headers}).pipe(
       map(res => res));
   }
 
@@ -68,16 +68,16 @@ export class CourseService {
   }
 
   // Create Student
-  createStudent(courseId, name) {
+  createStudent(classId, name) {
     const headers = new HttpHeaders().set('authorization', localStorage.getItem('id_token'));
-    return this.http.put<any>('http://localhost:5000/students', {name, course_id: courseId}, {headers}).pipe(
+    return this.http.put<any>('http://localhost:5000/students', {name, class_id: classId}, {headers}).pipe(
       map(res => console.log(res)));
   }
 
   // Edit Student
-  editStudent(courseId, name) {
+  editStudent(id, name) {
     const headers = new HttpHeaders().set('authorization', localStorage.getItem('id_token'));
-    return this.http.put<any>('http://localhost:5000/students', {name, course_id: courseId}, {headers}).pipe(
+    return this.http.put<any>('http://localhost:5000/students', {id, details: {name}}, {headers}).pipe(
       map(res => res));
   }
 

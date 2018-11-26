@@ -53,13 +53,13 @@ router.post("/", async (req, res) => {
     if (courseExists == 0) {
       res.status(400).send({ message: "No course Found" });
     } else {
-      const CourseClass = await CourseClass.update({
+      const courseClass = await CourseClass.update({
         _id: req.body.id
       },req.body.details);
-      res.status(200).send({success: true,course});
+      res.status(200).send({success: true,courseClass});
     }
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    res.status(500).send({ message: error.message,error });
   }
 });
 
